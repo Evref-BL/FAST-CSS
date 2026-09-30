@@ -34,3 +34,14 @@ FASTCSSERROR class >> annotation [
 	<package: #'FAST-CSS-Model'>
 	<generated>
 ]
+
+{ #category : 'accessing' }
+FASTCSSERROR >> sourceText [
+
+	"^ self source"
+	
+	^ self source ifNil: [
+		  self parentNode
+			  ifNotNil: [ :parent | parent sourceText ]
+			  ifNil: [ '' ] ]
+]

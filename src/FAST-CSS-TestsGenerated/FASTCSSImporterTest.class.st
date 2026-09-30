@@ -190,7 +190,7 @@ a[b] {};' withPlatformLineEndings.
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 5).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -199,6 +199,369 @@ a[b] {};' withPlatformLineEndings.
 [b=c] {}
 [d~=e] {}
 a[b] {};' withPlatformLineEndings
+]
+
+{ #category : 'tests' }
+FASTCSSImporterTest >> testGeneratedBinaryArithmeticOperators [
+	<generated>
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	Regenerate executing: 	self regenerateTest: #testGeneratedBinaryArithmeticOperators 	"
+
+	self parse: 'a {
+  width: calc(100% - 80px);
+  aspect-ratio: 1/2;
+  font-size: calc(10px + (56 - 10) * ((100vw - 320px) / (1920 - 320)));
+};'.
+
+	self assert: (fast allWithType: FASTCSSArguments) size equals: 2.
+	self assert: (fast allWithType: FASTCSSBinaryExpression) size equals: 8.
+	self assert: (fast allWithType: FASTCSSBlock) size equals: 1.
+	self assert: (fast allWithType: FASTCSSCallExpression) size equals: 2.
+	self assert: (fast allWithType: FASTCSSDeclaration) size equals: 3.
+	self assert: (fast allWithType: FASTCSSERROR) size equals: 1.
+	self assert: (fast allWithType: FASTCSSFunctionName) size equals: 2.
+	self assert: (fast allWithType: FASTCSSIntegerValue) size equals: 11.
+	self assert: (fast allWithType: FASTCSSParenthesizedValue) size equals: 4.
+	self assert: (fast allWithType: FASTCSSPropertyName) size equals: 3.
+	self assert: (fast allWithType: FASTCSSRuleSet) size equals: 1.
+	self assert: (fast allWithType: FASTCSSSelectors) size equals: 1.
+	self assert: (fast allWithType: FASTCSSStylesheet) size equals: 1.
+	self assert: (fast allWithType: FASTCSSTagName) size equals: 1.
+	self assert: (fast allWithType: FASTCSSUnit) size equals: 5.
+
+	stack push: fast rootEntities anyOne.
+	self assert: self topEntity sourceCode equals: 'a {
+  width: calc(100% - 80px);
+  aspect-ratio: 1/2;
+  font-size: calc(10px + (56 - 10) * ((100vw - 320px) / (1920 - 320)));
+};' withPlatformLineEndings.
+	self assert: (self topEntity isOfType: FASTCSSStylesheet).
+	self assert: (self topEntity isOfType: FamixTHasImmediateSource).
+	self assert: (self topEntity isOfType: FamixTSourceAnchor).
+	
+	"Testing value of multivalued relation childrenNodes"
+	self assert: self topEntity childrenNodes size equals: 2.
+	
+		stack push: (stack top childrenNodes at: 1).
+		self assert: self topEntity sourceCode equals: 'a {
+  width: calc(100% - 80px);
+  aspect-ratio: 1/2;
+  font-size: calc(10px + (56 - 10) * ((100vw - 320px) / (1920 - 320)));
+}' withPlatformLineEndings.
+		self assert: (self topEntity isOfType: FASTCSSRuleSet).
+		
+		"Testing value of multivalued relation childrenNodes"
+		self assert: self topEntity childrenNodes size equals: 2.
+		
+			stack push: (stack top childrenNodes at: 1).
+			self assert: self topEntity sourceCode equals: 'a'.
+			self assert: (self topEntity isOfType: FASTCSSSelectors).
+			
+			"Testing value of multivalued relation childrenNodes"
+			self assert: self topEntity childrenNodes size equals: 1.
+			
+				stack push: (stack top childrenNodes at: 1).
+				self assert: self topEntity sourceCode equals: 'a'.
+				self assert: (self topEntity isOfType: FASTCSSTagName).
+				stack pop.
+			stack pop.
+		
+			stack push: (stack top childrenNodes at: 2).
+			self assert: self topEntity sourceCode equals: '{
+  width: calc(100% - 80px);
+  aspect-ratio: 1/2;
+  font-size: calc(10px + (56 - 10) * ((100vw - 320px) / (1920 - 320)));
+}' withPlatformLineEndings.
+			self assert: (self topEntity isOfType: FASTCSSBlock).
+			
+			"Testing value of multivalued relation childrenNodes"
+			self assert: self topEntity childrenNodes size equals: 3.
+			
+				stack push: (stack top childrenNodes at: 1).
+				self assert: self topEntity sourceCode equals: 'width: calc(100% - 80px);'.
+				self assert: (self topEntity isOfType: FASTCSSDeclaration).
+				
+				"Testing value of multivalued relation childrenNodes"
+				self assert: self topEntity childrenNodes size equals: 2.
+				
+					stack push: (stack top childrenNodes at: 1).
+					self assert: self topEntity sourceCode equals: 'width'.
+					self assert: (self topEntity isOfType: FASTCSSPropertyName).
+					stack pop.
+				
+					stack push: (stack top childrenNodes at: 2).
+					self assert: self topEntity sourceCode equals: 'calc(100% - 80px)'.
+					self assert: (self topEntity isOfType: FASTCSSCallExpression).
+					
+					"Testing value of multivalued relation childrenNodes"
+					self assert: self topEntity childrenNodes size equals: 2.
+					
+						stack push: (stack top childrenNodes at: 1).
+						self assert: self topEntity sourceCode equals: 'calc'.
+						self assert: (self topEntity isOfType: FASTCSSFunctionName).
+						stack pop.
+					
+						stack push: (stack top childrenNodes at: 2).
+						self assert: self topEntity sourceCode equals: '(100% - 80px)'.
+						self assert: (self topEntity isOfType: FASTCSSArguments).
+						
+						"Testing value of multivalued relation childrenNodes"
+						self assert: self topEntity childrenNodes size equals: 1.
+						
+							stack push: (stack top childrenNodes at: 1).
+							self assert: self topEntity sourceCode equals: '100% - 80px'.
+							self assert: (self topEntity isOfType: FASTCSSBinaryExpression).
+							
+							"Testing value of multivalued relation childrenNodes"
+							self assert: self topEntity childrenNodes size equals: 2.
+							
+								stack push: (stack top childrenNodes at: 1).
+								self assert: self topEntity sourceCode equals: '100%'.
+								self assert: (self topEntity isOfType: FASTCSSIntegerValue).
+								
+								"Testing value of monovalue relation childrenNode"
+								self assert: self topEntity childrenNode isNotNil.
+
+									stack push: self topEntity childrenNode.
+									self assert: self topEntity sourceCode equals: '%'.
+									self assert: (self topEntity isOfType: FASTCSSUnit).
+									stack pop.
+								stack pop.
+							
+								stack push: (stack top childrenNodes at: 2).
+								self assert: self topEntity sourceCode equals: '80px'.
+								self assert: (self topEntity isOfType: FASTCSSIntegerValue).
+								
+								"Testing value of monovalue relation childrenNode"
+								self assert: self topEntity childrenNode isNotNil.
+
+									stack push: self topEntity childrenNode.
+									self assert: self topEntity sourceCode equals: 'px'.
+									self assert: (self topEntity isOfType: FASTCSSUnit).
+									stack pop.
+								stack pop.
+							stack pop.
+						stack pop.
+					stack pop.
+				stack pop.
+			
+				stack push: (stack top childrenNodes at: 2).
+				self assert: self topEntity sourceCode equals: 'aspect-ratio: 1/2;'.
+				self assert: (self topEntity isOfType: FASTCSSDeclaration).
+				
+				"Testing value of multivalued relation childrenNodes"
+				self assert: self topEntity childrenNodes size equals: 2.
+				
+					stack push: (stack top childrenNodes at: 1).
+					self assert: self topEntity sourceCode equals: 'aspect-ratio'.
+					self assert: (self topEntity isOfType: FASTCSSPropertyName).
+					stack pop.
+				
+					stack push: (stack top childrenNodes at: 2).
+					self assert: self topEntity sourceCode equals: '1/2'.
+					self assert: (self topEntity isOfType: FASTCSSBinaryExpression).
+					
+					"Testing value of multivalued relation childrenNodes"
+					self assert: self topEntity childrenNodes size equals: 2.
+					
+						stack push: (stack top childrenNodes at: 1).
+						self assert: self topEntity sourceCode equals: '1'.
+						self assert: (self topEntity isOfType: FASTCSSIntegerValue).
+						stack pop.
+					
+						stack push: (stack top childrenNodes at: 2).
+						self assert: self topEntity sourceCode equals: '2'.
+						self assert: (self topEntity isOfType: FASTCSSIntegerValue).
+						stack pop.
+					stack pop.
+				stack pop.
+			
+				stack push: (stack top childrenNodes at: 3).
+				self assert: self topEntity sourceCode equals: 'font-size: calc(10px + (56 - 10) * ((100vw - 320px) / (1920 - 320)));'.
+				self assert: (self topEntity isOfType: FASTCSSDeclaration).
+				
+				"Testing value of multivalued relation childrenNodes"
+				self assert: self topEntity childrenNodes size equals: 2.
+				
+					stack push: (stack top childrenNodes at: 1).
+					self assert: self topEntity sourceCode equals: 'font-size'.
+					self assert: (self topEntity isOfType: FASTCSSPropertyName).
+					stack pop.
+				
+					stack push: (stack top childrenNodes at: 2).
+					self assert: self topEntity sourceCode equals: 'calc(10px + (56 - 10) * ((100vw - 320px) / (1920 - 320)))'.
+					self assert: (self topEntity isOfType: FASTCSSCallExpression).
+					
+					"Testing value of multivalued relation childrenNodes"
+					self assert: self topEntity childrenNodes size equals: 2.
+					
+						stack push: (stack top childrenNodes at: 1).
+						self assert: self topEntity sourceCode equals: 'calc'.
+						self assert: (self topEntity isOfType: FASTCSSFunctionName).
+						stack pop.
+					
+						stack push: (stack top childrenNodes at: 2).
+						self assert: self topEntity sourceCode equals: '(10px + (56 - 10) * ((100vw - 320px) / (1920 - 320)))'.
+						self assert: (self topEntity isOfType: FASTCSSArguments).
+						
+						"Testing value of multivalued relation childrenNodes"
+						self assert: self topEntity childrenNodes size equals: 1.
+						
+							stack push: (stack top childrenNodes at: 1).
+							self assert: self topEntity sourceCode equals: '10px + (56 - 10) * ((100vw - 320px) / (1920 - 320))'.
+							self assert: (self topEntity isOfType: FASTCSSBinaryExpression).
+							
+							"Testing value of multivalued relation childrenNodes"
+							self assert: self topEntity childrenNodes size equals: 2.
+							
+								stack push: (stack top childrenNodes at: 1).
+								self assert: self topEntity sourceCode equals: '10px + (56 - 10)'.
+								self assert: (self topEntity isOfType: FASTCSSBinaryExpression).
+								
+								"Testing value of multivalued relation childrenNodes"
+								self assert: self topEntity childrenNodes size equals: 2.
+								
+									stack push: (stack top childrenNodes at: 1).
+									self assert: self topEntity sourceCode equals: '10px'.
+									self assert: (self topEntity isOfType: FASTCSSIntegerValue).
+									
+									"Testing value of monovalue relation childrenNode"
+									self assert: self topEntity childrenNode isNotNil.
+
+										stack push: self topEntity childrenNode.
+										self assert: self topEntity sourceCode equals: 'px'.
+										self assert: (self topEntity isOfType: FASTCSSUnit).
+										stack pop.
+									stack pop.
+								
+									stack push: (stack top childrenNodes at: 2).
+									self assert: self topEntity sourceCode equals: '(56 - 10)'.
+									self assert: (self topEntity isOfType: FASTCSSParenthesizedValue).
+									
+									"Testing value of monovalue relation childrenNode"
+									self assert: self topEntity childrenNode isNotNil.
+
+										stack push: self topEntity childrenNode.
+										self assert: self topEntity sourceCode equals: '56 - 10'.
+										self assert: (self topEntity isOfType: FASTCSSBinaryExpression).
+										
+										"Testing value of multivalued relation childrenNodes"
+										self assert: self topEntity childrenNodes size equals: 2.
+										
+											stack push: (stack top childrenNodes at: 1).
+											self assert: self topEntity sourceCode equals: '56'.
+											self assert: (self topEntity isOfType: FASTCSSIntegerValue).
+											stack pop.
+										
+											stack push: (stack top childrenNodes at: 2).
+											self assert: self topEntity sourceCode equals: '10'.
+											self assert: (self topEntity isOfType: FASTCSSIntegerValue).
+											stack pop.
+										stack pop.
+									stack pop.
+								stack pop.
+							
+								stack push: (stack top childrenNodes at: 2).
+								self assert: self topEntity sourceCode equals: '((100vw - 320px) / (1920 - 320))'.
+								self assert: (self topEntity isOfType: FASTCSSParenthesizedValue).
+								
+								"Testing value of monovalue relation childrenNode"
+								self assert: self topEntity childrenNode isNotNil.
+
+									stack push: self topEntity childrenNode.
+									self assert: self topEntity sourceCode equals: '(100vw - 320px) / (1920 - 320)'.
+									self assert: (self topEntity isOfType: FASTCSSBinaryExpression).
+									
+									"Testing value of multivalued relation childrenNodes"
+									self assert: self topEntity childrenNodes size equals: 2.
+									
+										stack push: (stack top childrenNodes at: 1).
+										self assert: self topEntity sourceCode equals: '(100vw - 320px)'.
+										self assert: (self topEntity isOfType: FASTCSSParenthesizedValue).
+										
+										"Testing value of monovalue relation childrenNode"
+										self assert: self topEntity childrenNode isNotNil.
+
+											stack push: self topEntity childrenNode.
+											self assert: self topEntity sourceCode equals: '100vw - 320px'.
+											self assert: (self topEntity isOfType: FASTCSSBinaryExpression).
+											
+											"Testing value of multivalued relation childrenNodes"
+											self assert: self topEntity childrenNodes size equals: 2.
+											
+												stack push: (stack top childrenNodes at: 1).
+												self assert: self topEntity sourceCode equals: '100vw'.
+												self assert: (self topEntity isOfType: FASTCSSIntegerValue).
+												
+												"Testing value of monovalue relation childrenNode"
+												self assert: self topEntity childrenNode isNotNil.
+
+													stack push: self topEntity childrenNode.
+													self assert: self topEntity sourceCode equals: 'vw'.
+													self assert: (self topEntity isOfType: FASTCSSUnit).
+													stack pop.
+												stack pop.
+											
+												stack push: (stack top childrenNodes at: 2).
+												self assert: self topEntity sourceCode equals: '320px'.
+												self assert: (self topEntity isOfType: FASTCSSIntegerValue).
+												
+												"Testing value of monovalue relation childrenNode"
+												self assert: self topEntity childrenNode isNotNil.
+
+													stack push: self topEntity childrenNode.
+													self assert: self topEntity sourceCode equals: 'px'.
+													self assert: (self topEntity isOfType: FASTCSSUnit).
+													stack pop.
+												stack pop.
+											stack pop.
+										stack pop.
+									
+										stack push: (stack top childrenNodes at: 2).
+										self assert: self topEntity sourceCode equals: '(1920 - 320)'.
+										self assert: (self topEntity isOfType: FASTCSSParenthesizedValue).
+										
+										"Testing value of monovalue relation childrenNode"
+										self assert: self topEntity childrenNode isNotNil.
+
+											stack push: self topEntity childrenNode.
+											self assert: self topEntity sourceCode equals: '1920 - 320'.
+											self assert: (self topEntity isOfType: FASTCSSBinaryExpression).
+											
+											"Testing value of multivalued relation childrenNodes"
+											self assert: self topEntity childrenNodes size equals: 2.
+											
+												stack push: (stack top childrenNodes at: 1).
+												self assert: self topEntity sourceCode equals: '1920'.
+												self assert: (self topEntity isOfType: FASTCSSIntegerValue).
+												stack pop.
+											
+												stack push: (stack top childrenNodes at: 2).
+												self assert: self topEntity sourceCode equals: '320'.
+												self assert: (self topEntity isOfType: FASTCSSIntegerValue).
+												stack pop.
+											stack pop.
+										stack pop.
+									stack pop.
+								stack pop.
+							stack pop.
+						stack pop.
+					stack pop.
+				stack pop.
+			stack pop.
+		stack pop.
+	
+		stack push: (stack top childrenNodes at: 2).
+		self assert: self topEntity sourceCode equals: ';'.
+		self assert: (self topEntity isOfType: FASTCSSERROR).
+		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
+		self assert: (self topEntity isOfType: FamixTSourceAnchor).
+		stack pop.
+	self assert: self topEntity source equals: 'a {
+  width: calc(100% - 80px);
+  aspect-ratio: 1/2;
+  font-size: calc(10px + (56 - 10) * ((100vw - 320px) / (1920 - 320)));
+};' withPlatformLineEndings
 ]
 
 { #category : 'tests' }
@@ -574,7 +937,7 @@ FASTCSSImporterTest >> testGeneratedCallsWhereEachArgumentHasMultipleValues [
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 2).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -630,7 +993,7 @@ FASTCSSImporterTest >> testGeneratedCharsetStatements [
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 2).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -757,7 +1120,7 @@ c > d > e {};' withPlatformLineEndings.
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 3).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -927,7 +1290,7 @@ div.class-b, .class-c.class-d {};' withPlatformLineEndings.
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 3).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -1041,7 +1404,7 @@ FASTCSSImporterTest >> testGeneratedColorLiterals [
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 2).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -1049,6 +1412,105 @@ FASTCSSImporterTest >> testGeneratedColorLiterals [
 	self assert: self topEntity source equals: 'a {
   b: #fafd04;
   c: #fafd0401;
+};' withPlatformLineEndings
+]
+
+{ #category : 'tests' }
+FASTCSSImporterTest >> testGeneratedCommentsInDeclarations [
+	<generated>
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	Regenerate executing: 	self regenerateTest: #testGeneratedCommentsInDeclarations 	"
+
+	self parse: '& {
+  position: /*${}*/ relative;
+};'.
+
+	self assert: (fast allWithType: FASTCSSBlock) size equals: 1.
+	self assert: (fast allWithType: FASTCSSComment) size equals: 1.
+	self assert: (fast allWithType: FASTCSSDeclaration) size equals: 1.
+	self assert: (fast allWithType: FASTCSSERROR) size equals: 1.
+	self assert: (fast allWithType: FASTCSSNestingSelector) size equals: 1.
+	self assert: (fast allWithType: FASTCSSPlainValue) size equals: 1.
+	self assert: (fast allWithType: FASTCSSPropertyName) size equals: 1.
+	self assert: (fast allWithType: FASTCSSRuleSet) size equals: 1.
+	self assert: (fast allWithType: FASTCSSSelectors) size equals: 1.
+	self assert: (fast allWithType: FASTCSSStylesheet) size equals: 1.
+
+	stack push: fast rootEntities anyOne.
+	self assert: self topEntity sourceCode equals: '& {
+  position: /*${}*/ relative;
+};' withPlatformLineEndings.
+	self assert: (self topEntity isOfType: FASTCSSStylesheet).
+	self assert: (self topEntity isOfType: FamixTHasImmediateSource).
+	self assert: (self topEntity isOfType: FamixTSourceAnchor).
+	
+	"Testing value of multivalued relation childrenNodes"
+	self assert: self topEntity childrenNodes size equals: 2.
+	
+		stack push: (stack top childrenNodes at: 1).
+		self assert: self topEntity sourceCode equals: '& {
+  position: /*${}*/ relative;
+}' withPlatformLineEndings.
+		self assert: (self topEntity isOfType: FASTCSSRuleSet).
+		
+		"Testing value of multivalued relation childrenNodes"
+		self assert: self topEntity childrenNodes size equals: 2.
+		
+			stack push: (stack top childrenNodes at: 1).
+			self assert: self topEntity sourceCode equals: '&'.
+			self assert: (self topEntity isOfType: FASTCSSSelectors).
+			
+			"Testing value of multivalued relation childrenNodes"
+			self assert: self topEntity childrenNodes size equals: 1.
+			
+				stack push: (stack top childrenNodes at: 1).
+				self assert: self topEntity sourceCode equals: '&'.
+				self assert: (self topEntity isOfType: FASTCSSNestingSelector).
+				stack pop.
+			stack pop.
+		
+			stack push: (stack top childrenNodes at: 2).
+			self assert: self topEntity sourceCode equals: '{
+  position: /*${}*/ relative;
+}' withPlatformLineEndings.
+			self assert: (self topEntity isOfType: FASTCSSBlock).
+			
+			"Testing value of multivalued relation childrenNodes"
+			self assert: self topEntity childrenNodes size equals: 1.
+			
+				stack push: (stack top childrenNodes at: 1).
+				self assert: self topEntity sourceCode equals: 'position: /*${}*/ relative;'.
+				self assert: (self topEntity isOfType: FASTCSSDeclaration).
+				
+				"Testing value of multivalued relation childrenNodes"
+				self assert: self topEntity childrenNodes size equals: 3.
+				
+					stack push: (stack top childrenNodes at: 1).
+					self assert: self topEntity sourceCode equals: 'position'.
+					self assert: (self topEntity isOfType: FASTCSSPropertyName).
+					stack pop.
+				
+					stack push: (stack top childrenNodes at: 2).
+					self assert: self topEntity sourceCode equals: '/*${}*/'.
+					self assert: (self topEntity isOfType: FASTCSSComment).
+					stack pop.
+				
+					stack push: (stack top childrenNodes at: 3).
+					self assert: self topEntity sourceCode equals: 'relative'.
+					self assert: (self topEntity isOfType: FASTCSSPlainValue).
+					stack pop.
+				stack pop.
+			stack pop.
+		stack pop.
+	
+		stack push: (stack top childrenNodes at: 2).
+		self assert: self topEntity sourceCode equals: ';'.
+		self assert: (self topEntity isOfType: FASTCSSERROR).
+		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
+		self assert: (self topEntity isOfType: FamixTSourceAnchor).
+		stack pop.
+	self assert: self topEntity source equals: '& {
+  position: /*${}*/ relative;
 };' withPlatformLineEndings
 ]
 
@@ -1095,8 +1557,7 @@ a {
 	self assert: self topEntity childrenNodes size equals: 3.
 	
 		stack push: (stack top childrenNodes at: 1).
-		self assert: self topEntity sourceCode equals: '// A comment
-'.
+		self assert: self topEntity sourceCode equals: '// A comment'.
 		self assert: (self topEntity isOfType: FASTCSSJsComment).
 		stack pop.
 	
@@ -1305,7 +1766,7 @@ a {
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 3).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -1456,7 +1917,7 @@ a-property: calc(5px + var(--a-variable));;' withPlatformLineEndings.
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 3).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -1570,7 +2031,7 @@ FASTCSSImporterTest >> testGeneratedDeclarationsWithoutTrailingSemicolons [
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 2).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -1742,7 +2203,7 @@ f * {};' withPlatformLineEndings.
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 4).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -1943,7 +2404,7 @@ FASTCSSImporterTest >> testGeneratedEscapeSequences [
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 3).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -2078,7 +2539,7 @@ FASTCSSImporterTest >> testGeneratedFunctionCalls [
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 2).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -2167,7 +2628,7 @@ FASTCSSImporterTest >> testGeneratedIdSelectors [
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 2).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -2394,7 +2855,7 @@ FASTCSSImporterTest >> testGeneratedImportStatements [
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 6).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -2495,7 +2956,7 @@ FASTCSSImporterTest >> testGeneratedImportantDeclarations [
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 2).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -2807,7 +3268,7 @@ FASTCSSImporterTest >> testGeneratedKeyframesStatements [
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 3).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -3213,7 +3674,7 @@ FASTCSSImporterTest >> testGeneratedMediaStatements [
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 6).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -3476,7 +3937,7 @@ FASTCSSImporterTest >> testGeneratedNamespaceStatements [
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 9).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -3794,7 +4255,7 @@ FASTCSSImporterTest >> testGeneratedNestedCombinators [
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 2).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -4010,7 +4471,7 @@ FASTCSSImporterTest >> testGeneratedNestingSelectors [
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 2).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -4149,7 +4610,7 @@ FASTCSSImporterTest >> testGeneratedNoSpacesAfterColons [
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 2).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -4159,369 +4620,6 @@ FASTCSSImporterTest >> testGeneratedNoSpacesAfterColons [
   display:flex;
   justify-content:center;
 };' withPlatformLineEndings
-]
-
-{ #category : 'tests' }
-FASTCSSImporterTest >> testGeneratedNthchildAndNthlastchildSelectors [
-	<generated>
-	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
-	Regenerate executing: 	self regenerateTest: #testGeneratedNthchildAndNthlastchildSelectors 	"
-
-	self parse: ':nth-child(2) {}
-:nth-last-child(-n) {}
-:nth-last-child(2n+1) {}
-:nth-child(2n + 2) {}
-:nth-last-child(-n) {}
-:nth-child(2n of a.external) {};'.
-
-	self assert: (fast allWithType: FASTCSSArguments) size equals: 6.
-	self assert: (fast allWithType: FASTCSSBlock) size equals: 6.
-	self assert: (fast allWithType: FASTCSSClassName) size equals: 7.
-	self assert: (fast allWithType: FASTCSSClassSelector) size equals: 1.
-	self assert: (fast allWithType: FASTCSSERROR) size equals: 1.
-	self assert: (fast allWithType: FASTCSSIdentifier) size equals: 1.
-	self assert: (fast allWithType: FASTCSSIntegerValue) size equals: 1.
-	self assert: (fast allWithType: FASTCSSPlainValue) size equals: 5.
-	self assert: (fast allWithType: FASTCSSPseudoClassSelector) size equals: 6.
-	self assert: (fast allWithType: FASTCSSRuleSet) size equals: 6.
-	self assert: (fast allWithType: FASTCSSSelectors) size equals: 6.
-	self assert: (fast allWithType: FASTCSSStylesheet) size equals: 1.
-	self assert: (fast allWithType: FASTCSSTagName) size equals: 1.
-
-	stack push: fast rootEntities anyOne.
-	self assert: self topEntity sourceCode equals: ':nth-child(2) {}
-:nth-last-child(-n) {}
-:nth-last-child(2n+1) {}
-:nth-child(2n + 2) {}
-:nth-last-child(-n) {}
-:nth-child(2n of a.external) {};' withPlatformLineEndings.
-	self assert: (self topEntity isOfType: FASTCSSStylesheet).
-	self assert: (self topEntity isOfType: FamixTHasImmediateSource).
-	self assert: (self topEntity isOfType: FamixTSourceAnchor).
-	
-	"Testing value of multivalued relation childrenNodes"
-	self assert: self topEntity childrenNodes size equals: 7.
-	
-		stack push: (stack top childrenNodes at: 1).
-		self assert: self topEntity sourceCode equals: ':nth-child(2) {}'.
-		self assert: (self topEntity isOfType: FASTCSSRuleSet).
-		
-		"Testing value of multivalued relation childrenNodes"
-		self assert: self topEntity childrenNodes size equals: 2.
-		
-			stack push: (stack top childrenNodes at: 1).
-			self assert: self topEntity sourceCode equals: ':nth-child(2)'.
-			self assert: (self topEntity isOfType: FASTCSSSelectors).
-			
-			"Testing value of multivalued relation childrenNodes"
-			self assert: self topEntity childrenNodes size equals: 1.
-			
-				stack push: (stack top childrenNodes at: 1).
-				self assert: self topEntity sourceCode equals: ':nth-child(2)'.
-				self assert: (self topEntity isOfType: FASTCSSPseudoClassSelector).
-				
-				"Testing value of multivalued relation childrenNodes"
-				self assert: self topEntity childrenNodes size equals: 2.
-				
-					stack push: (stack top childrenNodes at: 1).
-					self assert: self topEntity sourceCode equals: 'nth-child'.
-					self assert: (self topEntity isOfType: FASTCSSClassName).
-					stack pop.
-				
-					stack push: (stack top childrenNodes at: 2).
-					self assert: self topEntity sourceCode equals: '(2)'.
-					self assert: (self topEntity isOfType: FASTCSSArguments).
-					
-					"Testing value of multivalued relation childrenNodes"
-					self assert: self topEntity childrenNodes size equals: 1.
-					
-						stack push: (stack top childrenNodes at: 1).
-						self assert: self topEntity sourceCode equals: '2'.
-						self assert: (self topEntity isOfType: FASTCSSIntegerValue).
-						stack pop.
-					stack pop.
-				stack pop.
-			stack pop.
-		
-			stack push: (stack top childrenNodes at: 2).
-			self assert: self topEntity sourceCode equals: '{}'.
-			self assert: (self topEntity isOfType: FASTCSSBlock).
-			stack pop.
-		stack pop.
-	
-		stack push: (stack top childrenNodes at: 2).
-		self assert: self topEntity sourceCode equals: ':nth-last-child(-n) {}'.
-		self assert: (self topEntity isOfType: FASTCSSRuleSet).
-		
-		"Testing value of multivalued relation childrenNodes"
-		self assert: self topEntity childrenNodes size equals: 2.
-		
-			stack push: (stack top childrenNodes at: 1).
-			self assert: self topEntity sourceCode equals: ':nth-last-child(-n)'.
-			self assert: (self topEntity isOfType: FASTCSSSelectors).
-			
-			"Testing value of multivalued relation childrenNodes"
-			self assert: self topEntity childrenNodes size equals: 1.
-			
-				stack push: (stack top childrenNodes at: 1).
-				self assert: self topEntity sourceCode equals: ':nth-last-child(-n)'.
-				self assert: (self topEntity isOfType: FASTCSSPseudoClassSelector).
-				
-				"Testing value of multivalued relation childrenNodes"
-				self assert: self topEntity childrenNodes size equals: 2.
-				
-					stack push: (stack top childrenNodes at: 1).
-					self assert: self topEntity sourceCode equals: 'nth-last-child'.
-					self assert: (self topEntity isOfType: FASTCSSClassName).
-					stack pop.
-				
-					stack push: (stack top childrenNodes at: 2).
-					self assert: self topEntity sourceCode equals: '(-n)'.
-					self assert: (self topEntity isOfType: FASTCSSArguments).
-					
-					"Testing value of multivalued relation childrenNodes"
-					self assert: self topEntity childrenNodes size equals: 1.
-					
-						stack push: (stack top childrenNodes at: 1).
-						self assert: self topEntity sourceCode equals: '-n'.
-						self assert: (self topEntity isOfType: FASTCSSPlainValue).
-						stack pop.
-					stack pop.
-				stack pop.
-			stack pop.
-		
-			stack push: (stack top childrenNodes at: 2).
-			self assert: self topEntity sourceCode equals: '{}'.
-			self assert: (self topEntity isOfType: FASTCSSBlock).
-			stack pop.
-		stack pop.
-	
-		stack push: (stack top childrenNodes at: 3).
-		self assert: self topEntity sourceCode equals: ':nth-last-child(2n+1) {}'.
-		self assert: (self topEntity isOfType: FASTCSSRuleSet).
-		
-		"Testing value of multivalued relation childrenNodes"
-		self assert: self topEntity childrenNodes size equals: 2.
-		
-			stack push: (stack top childrenNodes at: 1).
-			self assert: self topEntity sourceCode equals: ':nth-last-child(2n+1)'.
-			self assert: (self topEntity isOfType: FASTCSSSelectors).
-			
-			"Testing value of multivalued relation childrenNodes"
-			self assert: self topEntity childrenNodes size equals: 1.
-			
-				stack push: (stack top childrenNodes at: 1).
-				self assert: self topEntity sourceCode equals: ':nth-last-child(2n+1)'.
-				self assert: (self topEntity isOfType: FASTCSSPseudoClassSelector).
-				
-				"Testing value of multivalued relation childrenNodes"
-				self assert: self topEntity childrenNodes size equals: 2.
-				
-					stack push: (stack top childrenNodes at: 1).
-					self assert: self topEntity sourceCode equals: 'nth-last-child'.
-					self assert: (self topEntity isOfType: FASTCSSClassName).
-					stack pop.
-				
-					stack push: (stack top childrenNodes at: 2).
-					self assert: self topEntity sourceCode equals: '(2n+1)'.
-					self assert: (self topEntity isOfType: FASTCSSArguments).
-					
-					"Testing value of multivalued relation childrenNodes"
-					self assert: self topEntity childrenNodes size equals: 1.
-					
-						stack push: (stack top childrenNodes at: 1).
-						self assert: self topEntity sourceCode equals: '2n+1'.
-						self assert: (self topEntity isOfType: FASTCSSPlainValue).
-						stack pop.
-					stack pop.
-				stack pop.
-			stack pop.
-		
-			stack push: (stack top childrenNodes at: 2).
-			self assert: self topEntity sourceCode equals: '{}'.
-			self assert: (self topEntity isOfType: FASTCSSBlock).
-			stack pop.
-		stack pop.
-	
-		stack push: (stack top childrenNodes at: 4).
-		self assert: self topEntity sourceCode equals: ':nth-child(2n + 2) {}'.
-		self assert: (self topEntity isOfType: FASTCSSRuleSet).
-		
-		"Testing value of multivalued relation childrenNodes"
-		self assert: self topEntity childrenNodes size equals: 2.
-		
-			stack push: (stack top childrenNodes at: 1).
-			self assert: self topEntity sourceCode equals: ':nth-child(2n + 2)'.
-			self assert: (self topEntity isOfType: FASTCSSSelectors).
-			
-			"Testing value of multivalued relation childrenNodes"
-			self assert: self topEntity childrenNodes size equals: 1.
-			
-				stack push: (stack top childrenNodes at: 1).
-				self assert: self topEntity sourceCode equals: ':nth-child(2n + 2)'.
-				self assert: (self topEntity isOfType: FASTCSSPseudoClassSelector).
-				
-				"Testing value of multivalued relation childrenNodes"
-				self assert: self topEntity childrenNodes size equals: 2.
-				
-					stack push: (stack top childrenNodes at: 1).
-					self assert: self topEntity sourceCode equals: 'nth-child'.
-					self assert: (self topEntity isOfType: FASTCSSClassName).
-					stack pop.
-				
-					stack push: (stack top childrenNodes at: 2).
-					self assert: self topEntity sourceCode equals: '(2n + 2)'.
-					self assert: (self topEntity isOfType: FASTCSSArguments).
-					
-					"Testing value of multivalued relation childrenNodes"
-					self assert: self topEntity childrenNodes size equals: 1.
-					
-						stack push: (stack top childrenNodes at: 1).
-						self assert: self topEntity sourceCode equals: '2n + 2'.
-						self assert: (self topEntity isOfType: FASTCSSPlainValue).
-						stack pop.
-					stack pop.
-				stack pop.
-			stack pop.
-		
-			stack push: (stack top childrenNodes at: 2).
-			self assert: self topEntity sourceCode equals: '{}'.
-			self assert: (self topEntity isOfType: FASTCSSBlock).
-			stack pop.
-		stack pop.
-	
-		stack push: (stack top childrenNodes at: 5).
-		self assert: self topEntity sourceCode equals: ':nth-last-child(-n) {}'.
-		self assert: (self topEntity isOfType: FASTCSSRuleSet).
-		
-		"Testing value of multivalued relation childrenNodes"
-		self assert: self topEntity childrenNodes size equals: 2.
-		
-			stack push: (stack top childrenNodes at: 1).
-			self assert: self topEntity sourceCode equals: ':nth-last-child(-n)'.
-			self assert: (self topEntity isOfType: FASTCSSSelectors).
-			
-			"Testing value of multivalued relation childrenNodes"
-			self assert: self topEntity childrenNodes size equals: 1.
-			
-				stack push: (stack top childrenNodes at: 1).
-				self assert: self topEntity sourceCode equals: ':nth-last-child(-n)'.
-				self assert: (self topEntity isOfType: FASTCSSPseudoClassSelector).
-				
-				"Testing value of multivalued relation childrenNodes"
-				self assert: self topEntity childrenNodes size equals: 2.
-				
-					stack push: (stack top childrenNodes at: 1).
-					self assert: self topEntity sourceCode equals: 'nth-last-child'.
-					self assert: (self topEntity isOfType: FASTCSSClassName).
-					stack pop.
-				
-					stack push: (stack top childrenNodes at: 2).
-					self assert: self topEntity sourceCode equals: '(-n)'.
-					self assert: (self topEntity isOfType: FASTCSSArguments).
-					
-					"Testing value of multivalued relation childrenNodes"
-					self assert: self topEntity childrenNodes size equals: 1.
-					
-						stack push: (stack top childrenNodes at: 1).
-						self assert: self topEntity sourceCode equals: '-n'.
-						self assert: (self topEntity isOfType: FASTCSSPlainValue).
-						stack pop.
-					stack pop.
-				stack pop.
-			stack pop.
-		
-			stack push: (stack top childrenNodes at: 2).
-			self assert: self topEntity sourceCode equals: '{}'.
-			self assert: (self topEntity isOfType: FASTCSSBlock).
-			stack pop.
-		stack pop.
-	
-		stack push: (stack top childrenNodes at: 6).
-		self assert: self topEntity sourceCode equals: ':nth-child(2n of a.external) {}'.
-		self assert: (self topEntity isOfType: FASTCSSRuleSet).
-		
-		"Testing value of multivalued relation childrenNodes"
-		self assert: self topEntity childrenNodes size equals: 2.
-		
-			stack push: (stack top childrenNodes at: 1).
-			self assert: self topEntity sourceCode equals: ':nth-child(2n of a.external)'.
-			self assert: (self topEntity isOfType: FASTCSSSelectors).
-			
-			"Testing value of multivalued relation childrenNodes"
-			self assert: self topEntity childrenNodes size equals: 1.
-			
-				stack push: (stack top childrenNodes at: 1).
-				self assert: self topEntity sourceCode equals: ':nth-child(2n of a.external)'.
-				self assert: (self topEntity isOfType: FASTCSSPseudoClassSelector).
-				
-				"Testing value of multivalued relation childrenNodes"
-				self assert: self topEntity childrenNodes size equals: 2.
-				
-					stack push: (stack top childrenNodes at: 1).
-					self assert: self topEntity sourceCode equals: 'nth-child'.
-					self assert: (self topEntity isOfType: FASTCSSClassName).
-					stack pop.
-				
-					stack push: (stack top childrenNodes at: 2).
-					self assert: self topEntity sourceCode equals: '(2n of a.external)'.
-					self assert: (self topEntity isOfType: FASTCSSArguments).
-					
-					"Testing value of multivalued relation childrenNodes"
-					self assert: self topEntity childrenNodes size equals: 2.
-					
-						stack push: (stack top childrenNodes at: 1).
-						self assert: self topEntity sourceCode equals: '2n '.
-						self assert: (self topEntity isOfType: FASTCSSPlainValue).
-						stack pop.
-					
-						stack push: (stack top childrenNodes at: 2).
-						self assert: self topEntity sourceCode equals: 'a.external'.
-						self assert: (self topEntity isOfType: FASTCSSClassSelector).
-						
-						"Testing value of multivalued relation childrenNodes"
-						self assert: self topEntity childrenNodes size equals: 2.
-						
-							stack push: (stack top childrenNodes at: 1).
-							self assert: self topEntity sourceCode equals: 'a'.
-							self assert: (self topEntity isOfType: FASTCSSTagName).
-							stack pop.
-						
-							stack push: (stack top childrenNodes at: 2).
-							self assert: self topEntity sourceCode equals: 'external'.
-							self assert: (self topEntity isOfType: FASTCSSClassName).
-							
-							"Testing value of multivalued relation childrenNodes"
-							self assert: self topEntity childrenNodes size equals: 1.
-							
-								stack push: (stack top childrenNodes at: 1).
-								self assert: self topEntity sourceCode equals: 'external'.
-								self assert: (self topEntity isOfType: FASTCSSIdentifier).
-								stack pop.
-							stack pop.
-						stack pop.
-					stack pop.
-				stack pop.
-			stack pop.
-		
-			stack push: (stack top childrenNodes at: 2).
-			self assert: self topEntity sourceCode equals: '{}'.
-			self assert: (self topEntity isOfType: FASTCSSBlock).
-			stack pop.
-		stack pop.
-	
-		stack push: (stack top childrenNodes at: 7).
-		self assert: self topEntity sourceCode equals: ''.
-		self assert: (self topEntity isOfType: FASTCSSERROR).
-		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
-		self assert: (self topEntity isOfType: FamixTSourceAnchor).
-		stack pop.
-	self assert: self topEntity source equals: ':nth-child(2) {}
-:nth-last-child(-n) {}
-:nth-last-child(2n+1) {}
-:nth-child(2n + 2) {}
-:nth-last-child(-n) {}
-:nth-child(2n of a.external) {};' withPlatformLineEndings
 ]
 
 { #category : 'tests' }
@@ -4767,7 +4865,7 @@ FASTCSSImporterTest >> testGeneratedNumbers [
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 2).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -5021,7 +5119,7 @@ FASTCSSImporterTest >> testGeneratedOtherAtstatements [
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 2).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -5400,7 +5498,7 @@ FASTCSSImporterTest >> testGeneratedPostCSS [
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 4).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -6397,7 +6495,7 @@ a:not([href]) {}
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 15).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -6483,7 +6581,7 @@ FASTCSSImporterTest >> testGeneratedPseudoelementSelectors [
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 2).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -6592,7 +6690,7 @@ FASTCSSImporterTest >> testGeneratedRuleSets [
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 2).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -6871,7 +6969,7 @@ FASTCSSImporterTest >> testGeneratedScopeStatements [
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 3).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -7115,95 +7213,13 @@ FASTCSSImporterTest >> testGeneratedSiblingSelectors [
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 3).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
 		stack pop.
 	self assert: self topEntity source equals: 'a.b ~ c.d {}
 .e.f + .g.h {};' withPlatformLineEndings
-]
-
-{ #category : 'tests' }
-FASTCSSImporterTest >> testGeneratedSlottedPseudoElement [
-	<generated>
-	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
-	Regenerate executing: 	self regenerateTest: #testGeneratedSlottedPseudoElement 	"
-
-	self parse: '::slotted(button) {};'.
-
-	self assert: (fast allWithType: FASTCSSArguments) size equals: 1.
-	self assert: (fast allWithType: FASTCSSBlock) size equals: 1.
-	self assert: (fast allWithType: FASTCSSERROR) size equals: 1.
-	self assert: (fast allWithType: FASTCSSPseudoElementSelector) size equals: 1.
-	self assert: (fast allWithType: FASTCSSRuleSet) size equals: 1.
-	self assert: (fast allWithType: FASTCSSSelectors) size equals: 1.
-	self assert: (fast allWithType: FASTCSSStylesheet) size equals: 1.
-	self assert: (fast allWithType: FASTCSSTagName) size equals: 2.
-
-	stack push: fast rootEntities anyOne.
-	self assert: self topEntity sourceCode equals: '::slotted(button) {};'.
-	self assert: (self topEntity isOfType: FASTCSSStylesheet).
-	self assert: (self topEntity isOfType: FamixTHasImmediateSource).
-	self assert: (self topEntity isOfType: FamixTSourceAnchor).
-	
-	"Testing value of multivalued relation childrenNodes"
-	self assert: self topEntity childrenNodes size equals: 2.
-	
-		stack push: (stack top childrenNodes at: 1).
-		self assert: self topEntity sourceCode equals: '::slotted(button) {}'.
-		self assert: (self topEntity isOfType: FASTCSSRuleSet).
-		
-		"Testing value of multivalued relation childrenNodes"
-		self assert: self topEntity childrenNodes size equals: 2.
-		
-			stack push: (stack top childrenNodes at: 1).
-			self assert: self topEntity sourceCode equals: '::slotted(button)'.
-			self assert: (self topEntity isOfType: FASTCSSSelectors).
-			
-			"Testing value of multivalued relation childrenNodes"
-			self assert: self topEntity childrenNodes size equals: 1.
-			
-				stack push: (stack top childrenNodes at: 1).
-				self assert: self topEntity sourceCode equals: '::slotted(button)'.
-				self assert: (self topEntity isOfType: FASTCSSPseudoElementSelector).
-				
-				"Testing value of multivalued relation childrenNodes"
-				self assert: self topEntity childrenNodes size equals: 2.
-				
-					stack push: (stack top childrenNodes at: 1).
-					self assert: self topEntity sourceCode equals: 'slotted'.
-					self assert: (self topEntity isOfType: FASTCSSTagName).
-					stack pop.
-				
-					stack push: (stack top childrenNodes at: 2).
-					self assert: self topEntity sourceCode equals: '(button)'.
-					self assert: (self topEntity isOfType: FASTCSSArguments).
-					
-					"Testing value of multivalued relation childrenNodes"
-					self assert: self topEntity childrenNodes size equals: 1.
-					
-						stack push: (stack top childrenNodes at: 1).
-						self assert: self topEntity sourceCode equals: 'button'.
-						self assert: (self topEntity isOfType: FASTCSSTagName).
-						stack pop.
-					stack pop.
-				stack pop.
-			stack pop.
-		
-			stack push: (stack top childrenNodes at: 2).
-			self assert: self topEntity sourceCode equals: '{}'.
-			self assert: (self topEntity isOfType: FASTCSSBlock).
-			stack pop.
-		stack pop.
-	
-		stack push: (stack top childrenNodes at: 2).
-		self assert: self topEntity sourceCode equals: ''.
-		self assert: (self topEntity isOfType: FASTCSSERROR).
-		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
-		self assert: (self topEntity isOfType: FamixTSourceAnchor).
-		stack pop.
-	self assert: self topEntity source equals: '::slotted(button) {};'
 ]
 
 { #category : 'tests' }
@@ -7311,7 +7327,7 @@ FASTCSSImporterTest >> testGeneratedSpacesAfterColonsInPropertyDeclarations [
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 2).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -7447,7 +7463,7 @@ FASTCSSImporterTest >> testGeneratedStrings [
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 2).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -7790,7 +7806,7 @@ FASTCSSImporterTest >> testGeneratedSupportsStatements [
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 5).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -8001,7 +8017,7 @@ FASTCSSImporterTest >> testGeneratedTheNotSelector [
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 3).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -8109,7 +8125,7 @@ h1, h2, h3, h4 {};' withPlatformLineEndings.
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 3).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -8201,7 +8217,7 @@ FASTCSSImporterTest >> testGeneratedURLs [
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 2).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -8262,7 +8278,7 @@ FASTCSSImporterTest >> testGeneratedUniversalSelectors [
 		stack pop.
 	
 		stack push: (stack top childrenNodes at: 2).
-		self assert: self topEntity sourceCode equals: ''.
+		self assert: self topEntity sourceCode equals: ';'.
 		self assert: (self topEntity isOfType: FASTCSSERROR).
 		self assert: (self topEntity isOfType: FamixTHasImmediateSource).
 		self assert: (self topEntity isOfType: FamixTSourceAnchor).
@@ -8272,5 +8288,5 @@ FASTCSSImporterTest >> testGeneratedUniversalSelectors [
 
 { #category : 'as yet unclassified' }
 FASTCSSImporterTest >> topEntity [
-	^ stack top 
+	^ stack top
 ]
