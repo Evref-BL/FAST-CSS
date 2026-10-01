@@ -1,8 +1,8 @@
 Class {
 	#name : 'FASTCSSImporterTest',
 	#superclass : 'TSFASTAbstractImporterTest',
-	#category : 'FAST-CSS-TestsGenerated',
-	#package : 'FAST-CSS-TestsGenerated'
+	#category : 'FAST-CSS-Tests',
+	#package : 'FAST-CSS-Tests'
 }
 
 { #category : 'tests' }
