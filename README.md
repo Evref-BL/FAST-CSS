@@ -36,7 +36,7 @@ res := FASTCSSImporter new parse:  'body {
 
 ## NB
 
-The project is updated starting October 1 2026. It works on Moose 12+. The metamodel is complete following the description of tre siter css original repo. 
+The project is updated starting October 1 2026. It works on Moose 12+. The metamodel is complete following the description of tree sitter css original repo. 
 
 If you think an update is recommended or new feature is requested ... Your contribution is more than welcome. Happy coding with Pharo and CSS :)
 
