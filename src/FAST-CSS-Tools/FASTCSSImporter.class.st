@@ -1,8 +1,7 @@
 Class {
-	#name : 'FASTCSSParser',
-	#superclass : 'Object',
+	#name : 'FASTCSSImporter',
+	#superclass : 'TSFASTAbstractImporter',
 	#instVars : [
-		'tsParser',
 		'representations'
 	],
 	#category : 'FAST-CSS-Tools',
@@ -10,13 +9,13 @@ Class {
 }
 
 { #category : 'as yet unclassified' }
-FASTCSSParser >> deleteTreeSitterParser [
+FASTCSSImporter >> deleteTreeSitterParser [
 	
 	self tsParser delete 
 ]
 
 { #category : 'as yet unclassified' }
-FASTCSSParser >> editTree: aFastTree using: inputEdit [
+FASTCSSImporter >> editTree: aFastTree using: inputEdit [
 
 	| treeRepresentation |
 	"1- create a parser"
@@ -37,7 +36,7 @@ FASTCSSParser >> editTree: aFastTree using: inputEdit [
 ]
 
 { #category : 'as yet unclassified' }
-FASTCSSParser >> importToFAST: tsTree usingSourceCode: aString [
+FASTCSSImporter >> importToFAST: tsTree usingSourceCode: aString [
 
 	| tsLanguage importer |
 	
@@ -53,14 +52,14 @@ FASTCSSParser >> importToFAST: tsTree usingSourceCode: aString [
 ]
 
 { #category : 'as yet unclassified' }
-FASTCSSParser >> initialiseTreeSitterParser [
+FASTCSSImporter >> initialiseTreeSitterParser [
 
 	self tsParser: TSParser new.
 	self tsParser language: TSLanguage css.
 ]
 
 { #category : 'initialization' }
-FASTCSSParser >> initialize [
+FASTCSSImporter >> initialize [
 	
 	super initialize. 
 	
@@ -68,7 +67,7 @@ FASTCSSParser >> initialize [
 ]
 
 { #category : 'parsing' }
-FASTCSSParser >> parse: aString [
+FASTCSSImporter >> parse: aString [
 	
 	|tsTree fastTree|
 	
@@ -95,7 +94,7 @@ FASTCSSParser >> parse: aString [
 ]
 
 { #category : 'parsing' }
-FASTCSSParser >> parse: aString usingOldTree: aFastTree [
+FASTCSSImporter >> parse: aString usingOldTree: aFastTree [
 
 	| treeRepresentation newFastTree newTreeSitterTree |
 	
@@ -122,25 +121,31 @@ FASTCSSParser >> parse: aString usingOldTree: aFastTree [
 ]
 
 { #category : 'accessing' }
-FASTCSSParser >> representations [
+FASTCSSImporter >> representations [
 
 	^ representations
 ]
 
 { #category : 'accessing' }
-FASTCSSParser >> representations: anObject [
+FASTCSSImporter >> representations: anObject [
 
 	representations := anObject
 ]
 
+{ #category : 'as yet unclassified' }
+FASTCSSImporter >> tsLanguage [
+
+	^ TSLanguage css
+]
+
 { #category : 'accessing' }
-FASTCSSParser >> tsParser [
+FASTCSSImporter >> tsParser [
 
 	^ tsParser
 ]
 
 { #category : 'accessing' }
-FASTCSSParser >> tsParser: anObject [
+FASTCSSImporter >> tsParser: anObject [
 
 	tsParser := anObject
 ]

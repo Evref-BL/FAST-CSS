@@ -29,8 +29,19 @@ Class {
 { #category : 'meta' }
 FASTCSSERROR class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #ERROR super: #FASTCSSEntity>
 	<package: #'FAST-CSS-Model'>
 	<generated>
-	^ self
+]
+
+{ #category : 'accessing' }
+FASTCSSERROR >> sourceText [
+
+	"^ self source"
+	
+	^ self source ifNil: [
+		  self parentNode
+			  ifNotNil: [ :parent | parent sourceText ]
+			  ifNil: [ '' ] ]
 ]
