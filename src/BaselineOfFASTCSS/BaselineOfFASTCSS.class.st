@@ -56,8 +56,7 @@ BaselineOfFASTCSS >> defineGroups: spec [
 
 	spec
 		group: 'core'
-		with: #( 'FAST-CSS-Model' 
-			   'FAST-CSS-Model-Generator' 'FAST-CSS-Tests' );
+		with: #( 'FAST-CSS-Model' 'FAST-CSS-Model-Generator' 'FAST-CSS-Tests' );
 		group: 'tools' with: #( 'core' 'FAST-CSS-Tools' )
 ]
 
@@ -68,6 +67,8 @@ BaselineOfFASTCSS >> definePackages: spec [
 		package: 'FAST-CSS-Model'
 		with: [ spec requires: #( 'FAST' ) ];
 		package: 'FAST-CSS-Model-Generator'; 
+		package: 'FAST-CSS-Tests'
+		with: [ spec requires: #( 'FAST-CSS-Model' ) ]; 
 		package: 'FAST-CSS-Tools'
 		with: [ spec requires: #( 'TreeSitter' ) ].
 
