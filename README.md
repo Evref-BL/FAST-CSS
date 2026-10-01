@@ -29,25 +29,17 @@ But for more details, you can have a look at this [blog-post][tree-sitter-blog].
 To use it in Pharo, you can check example below:
 
 ```smalltalk  
-res := FASTCSSParser new parse:  'body {
+res := FASTCSSImporter new parse:  'body {
   background-color: linen;
 }'. 
 ```  
 
 ## NB
 
-The project is still at the very beginning. But at least now it can parse and generate a basic model of FAST-CSS.
-Still need to:
-- Reorder classes
-- Add new properties
-- Check traits
-- Add tests
+The project is updated starting October 1 2026. The metamodel is complete following the description of tre siter css original repo. 
 
-Your contribution is more than welcome.
-Happy coding with CSS :)
+If you think an update is recommended or new feature is requested ... Your contribution is more than welcome. Happy coding with Pharo and CSS :)
 
 [fast]: https://github.com/moosetechnology/FAST 
 [pharo-tree-sitter]: https://github.com/Evref-BL/Pharo-Tree-Sitter
 [tree-sitter-blog]: https://github.com/moosetechnology/moosetechnology.github.io/blob/c2d6c85f8c2145380db7fc0ad9994640e97b635e/_drafts/2025-03-25-tree-sitter.md
-
-
