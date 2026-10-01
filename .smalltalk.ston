@@ -2,7 +2,7 @@ SmalltalkCISpec {
   #loading : [
     SCIMetacelloLoadSpec {
       #baseline : 'FASTCSS',
-      #directory : '.',
+      #directory : 'src',
       #platforms : [ #pharo ]
     }
   ],
