@@ -48,7 +48,7 @@ BaselineOfFASTCSS >> defineDependencies: spec [
 	spec baseline: 'TreeSitter' with: [
 		spec
 			loads: #( 'moose' 'css' );
-			repository: 'github://Evref-BL/Pharo-Tree-Sitter:v.2.1/src' ]
+			repository: 'github://Evref-BL/Pharo-Tree-Sitter:main/src' ]
 ]
 
 { #category : 'baselines' }
@@ -56,8 +56,7 @@ BaselineOfFASTCSS >> defineGroups: spec [
 
 	spec
 		group: 'core'
-		with: #( 'FAST-CSS-Model' 
-			   'FAST-CSS-Model-Generator' );
+		with: #( 'FAST-CSS-Model' 'FAST-CSS-Model-Generator' 'FAST-CSS-Tests' );
 		group: 'tools' with: #( 'core' 'FAST-CSS-Tools' )
 ]
 
@@ -68,6 +67,8 @@ BaselineOfFASTCSS >> definePackages: spec [
 		package: 'FAST-CSS-Model'
 		with: [ spec requires: #( 'FAST' ) ];
 		package: 'FAST-CSS-Model-Generator'; 
+		package: 'FAST-CSS-Tests'
+		with: [ spec requires: #( 'FAST-CSS-Model' ) ]; 
 		package: 'FAST-CSS-Tools'
 		with: [ spec requires: #( 'TreeSitter' ) ].
 
