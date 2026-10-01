@@ -57,7 +57,7 @@ BaselineOfFASTCSS >> defineGroups: spec [
 	spec
 		group: 'core'
 		with: #( 'FAST-CSS-Model' 
-			   'FAST-CSS-Model-Generator' );
+			   'FAST-CSS-Model-Generator' 'FAST-CSS-Tests' );
 		group: 'tools' with: #( 'core' 'FAST-CSS-Tools' )
 ]
 
