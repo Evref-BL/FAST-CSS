@@ -1,5 +1,8 @@
 # FAST-CSS  
 
+[![Coverage Status](https://coveralls.io/repos/github/Evref-BL/FAST-CSS/badge.svg?branch=main)](https://coveralls.io/github/Evref-BL/FAST-CSS?branch=main)
+[![CI](https://github.com/Evref-BL/FAST-CSS/actions/workflows/ci.yml/badge.svg)](https://github.com/Evref-BL/FAST-CSS/actions/workflows/ci.yml)
+
 FAST-CSS is a recently created project that integrates with Moose and leverages the Tree-Sitter parser to analyze CSS source code in Pharo.  
 
 ## Features  
