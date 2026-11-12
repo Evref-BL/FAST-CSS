@@ -8,10 +8,11 @@ Class {
 	#package : 'FAST-CSS-Tools'
 }
 
-{ #category : 'as yet unclassified' }
-FASTCSSImporter >> deleteTreeSitterParser [
-	
-	self tsParser delete 
+{ #category : 'accessing' }
+FASTCSSImporter class >> extensions [
+	"File extensions without the dot that the importer handles"
+
+	^ #( 'css' )
 ]
 
 { #category : 'as yet unclassified' }
@@ -49,13 +50,6 @@ FASTCSSImporter >> importToFAST: tsTree usingSourceCode: aString [
 	importer originString: aString. 
 	
 	^ importer import: tsTree .
-]
-
-{ #category : 'as yet unclassified' }
-FASTCSSImporter >> initialiseTreeSitterParser [
-
-	self tsParser: TSParser new.
-	self tsParser language: TSLanguage css.
 ]
 
 { #category : 'initialization' }
@@ -136,16 +130,4 @@ FASTCSSImporter >> representations: anObject [
 FASTCSSImporter >> tsLanguage [
 
 	^ TSLanguage css
-]
-
-{ #category : 'accessing' }
-FASTCSSImporter >> tsParser [
-
-	^ tsParser
-]
-
-{ #category : 'accessing' }
-FASTCSSImporter >> tsParser: anObject [
-
-	tsParser := anObject
 ]
