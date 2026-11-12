@@ -8286,6 +8286,13 @@ FASTCSSImporterTest >> testGeneratedUniversalSelectors [
 	self assert: self topEntity source equals: '* {};'
 ]
 
+{ #category : 'tests - importer API' }
+FASTCSSImporterTest >> testHandlesItsExtensions [
+
+	self assert: (FASTCSSImporter handlesFile: 'style.css' asFileReference).
+	self deny: (FASTCSSImporter handlesFile: 'index.html' asFileReference)
+]
+
 { #category : 'as yet unclassified' }
 FASTCSSImporterTest >> topEntity [
 	^ stack top
