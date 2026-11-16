@@ -8286,6 +8286,16 @@ FASTCSSImporterTest >> testGeneratedUniversalSelectors [
 	self assert: self topEntity source equals: '* {};'
 ]
 
+{ #category : 'tests' }
+FASTCSSImporterTest >> testParseIntoAModelAddsTheSecondStylesheet [
+
+	| model |
+	importer := FASTCSSImporter new.
+	model := importer parse: 'a { color: red }'.
+	self assert: (importer parse: 'b { margin: 0 }' into: model) identicalTo: model.
+	self assert: (model allWithType: FASTCSSStylesheet) size equals: 2
+]
+
 { #category : 'as yet unclassified' }
 FASTCSSImporterTest >> topEntity [
 	^ stack top
